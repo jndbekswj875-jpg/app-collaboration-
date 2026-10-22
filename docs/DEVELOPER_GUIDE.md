@@ -49,3 +49,9 @@ The public repository has no project-wide license selected. Discuss code ownersh
 ## Security and privacy
 
 See [SECURITY.md](../SECURITY.md). Use synthetic or explicitly permissioned test examples only. Do not publish private chat data, contact lists or secrets in Issues or pull requests.
+
+## Edit in GitHub Codespaces (optional)
+
+From the repository page, choose **Code → Codespaces → Create codespace on main** if your account has Codespaces access. The repository includes a devcontainer configuration with Node.js and Python support. In the Codespaces terminal run **npm run check**, then **npm start**; use the forwarded **port 4173** preview to open the app. Create a new branch for your change and open a pull request back to main. If Codespaces is not available, use a local clone following the setup steps above.
+
+**For external collaborators:** A public repository can accept a fork and pull request without granting direct push access. The CODEOWNERS file requests owner review, but enforceable protected-branch rules must be configured in repository settings separately.
