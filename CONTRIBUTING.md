@@ -1,46 +1,43 @@
-# Contributing / コラボレーションについて
+# Contributing to Community AI Workspace
 
-Thanks for your interest! This is an **early-stage community app proposal**. We are welcoming product ideas, bilingual writing, event-organizer feedback, design and engineering discussions. No launch date or paid role has been promised.
+**Japanese version:** [日本語版](CONTRIBUTING.ja.md)
 
-興味を持ってくれてありがとうございます！このプロジェクトは**コミュニティ向けAIチャットアプリの共同開発構想**です。イベント主催者の意見、日英の文章作成、デザイン、エンジニアリングなど、さまざまな形で参加できます。リリース日・報酬・稼働の約束はまだありません。
+Thanks for taking an interest in the project! The application is at the proposal stage, and people who organize events are just as welcome as software developers. There is no confirmed launch date, paid role, or work schedule.
 
-## Ways to help
-- **As an event organizer:** Describe what you actually do to invite, coordinate, collect RSVPs and follow up. Which repeated task takes time?
-- **As a participant:** Explain what is confusing or inconvenient when plans live in multiple group chats.
-- **As a designer:** Propose simple mobile-first layouts for RSVP, group conversations and the shared decision board.
-- **As a developer:** Review possible architecture, feasibility, accessibility, real-time features and consent-based AI design.
-- **As a tester:** Help with one small, consent-based event test when the project is activated.
+## What kind of help is useful?
 
-## How to start
-1. Read the [README](README.md), [chat system design / システム設計](docs/SYSTEM_DESIGN.md), and [build tasks / 開発タスク](docs/BUILD_PLAN.md).
-2. Pick **one task ID** from the build plan (for example C-04 for the chat UI or A-04 for AI evaluation), or browse [Issues](https://github.com/jndbekswj875-jpg/app-collaboration-/issues).
-3. Open an Issue with your task ID, a concrete user scenario or proposed deliverable; feel free to write in **English or Japanese**.
-4. If you want to contribute code, discuss the scope, ownership, and licensing in an Issue *before* investing significant work or opening a substantial PR.
+- **Community members:** Explain a real event coordination problem, without sharing anyone's private messages or identity.
+- **Organizers:** Describe how invites, reminders, decisions, RSVPs and expenses currently work.
+- **Designers:** Propose a simple phone-first group chat and shared board.
+- **Frontend developers:** Prototype accessible chat and board interactions.
+- **Backend developers:** Suggest authentication, private groups, realtime messaging and safe data storage.
+- **AI developers:** Explore consent-based summaries, validation, error measurement and API costs.
+- **Testers and writers:** Identify confusing screens, privacy risks, useful examples and clear explanations.
 
-## Suggested issue template
+## Where should I start?
 
-**What problem did you experience?**  
-**Who has this problem?**  
-**What do you do now?**  
-**What would a useful change look like?**  
-**Any privacy, security or cost concerns?**
+1. Read [the English README](README.md) and the [system design](docs/SYSTEM_DESIGN.md).
+2. Browse the [development task plan](docs/BUILD_PLAN.md) and choose **one task ID** such as C-04 (chat user interface) or A-04 (AI summary evaluation).
+3. Open or comment on a [GitHub Issue](https://github.com/jndbekswj875-jpg/app-collaboration-/issues), explaining what you can contribute and what you would need clarified.
+4. Agree on scope, acceptance criteria, code ownership and licensing before making a significant code contribution.
+5. When appropriate, work in a branch and share a small, reviewable pull request or design mockup.
 
-## Safety & privacy
-Do not post real attendee names, contact details, private messages, photos, passwords, payment records, API keys, or other sensitive information in public GitHub Issues or source code. Please use invented example data.
+## Example issue
 
-There is **no project-wide open-source license selected yet**. Publicly viewable source does not by itself grant general reuse rights. Before code contributions, please discuss intended licensing and ownership with the repository owner.
+- **Task or feature:** C-04 chat composer
+- **Problem:** People need a simple way to send and read messages on a phone.
+- **Proposal:** A responsive composer, message list and network-error state.
+- **Done when:** A test user can send a message and see it after reconnecting.
+- **Questions:** Which design library and accessibility tests should we use?
 
-Be kind, constructive, respectful of different skill levels, and explicit about what is an idea versus something already working.
+## Privacy and safety
 
----
+Do **not** post participant names, private group conversation logs, contact details, API keys, passwords, payment records, or other sensitive information in public GitHub Issues, pull requests or files. Use fictional examples or carefully permissioned and anonymized observations. AI experiments need clear member permissions and human approval of official event decisions.
 
-友達にも気軽に共有してください。「これができたら便利」「ここの操作が難しそう」など、率直な意見を歓迎します。
+## Licensing and expectations
 
+A public repository does not automatically mean that source code can be reused under an open-source license. A project-wide license and contribution ownership terms have not yet been selected. Discuss these with the owner before making substantial code contributions. Contributions and job opportunities are not guaranteed.
 
-## 作業参加の目安 / Example starting contributions
-- **C-04 チャット画面:** デザインと入力・表示画面の試作 / Prototype chat timeline and composer.
-- **B-01 共有ボード:** 提案・確認済みを区別するUI / Build draft-versus-confirmed board cards.
-- **A-04 AIの評価:** 匿名化・架空の会話で誤りや費用を検証 / Test accuracy/cost with synthetic or permissioned chats.
-- **P-01 イベント主催者の課題:** 個人情報を出さずに今の運営手順を説明 / Document a real organizer workflow anonymously.
+Please be respectful, constructive, and clear about which features are proposed, prototyped or actually deployed.
 
-The chat system is the starting feature. See [BUILD_PLAN.md](docs/BUILD_PLAN.md) before deciding the size of a code contribution. / **まずはチャットの基礎機能から**。作業範囲は開発タスク一覧を確認してください。
+**Other resources:** [Build tasks](docs/BUILD_PLAN.md) · [System design](docs/SYSTEM_DESIGN.md).
