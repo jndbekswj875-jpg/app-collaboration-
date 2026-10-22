@@ -1,6 +1,6 @@
 # Product Vision: Community AI Workspace
 
-**Japanese version:** [製品コンセプト](PRODUCT_VISION.ja.md)  
+**Japanese version:** [Japanese edition](PRODUCT_VISION.ja.md)  
 **Stage:** Public proposal for discussion. Features are not a claim of a launched application.
 
 ## The problem
