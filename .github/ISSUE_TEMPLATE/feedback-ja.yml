@@ -1,0 +1,53 @@
+name: イベント運営で困っていることを教える
+description: 連絡・予定・情報の共有で困ることや、欲しい機能を教えてください。開発の知識は必要ありません。
+title: "[利用者の意見] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご協力ありがとうございます。友人やコミュニティで無料利用できるAIチャット型ワークスペースを考えています。
+        **ここに書いた内容は公開されます。** 名前、住所、電話番号、非公開の会話、他人の個人情報は投稿しないでください。
+  - type: dropdown
+    id: activity
+    attributes:
+      label: どのようなイベント・グループですか？
+      options:
+        - 友人・家族との集まり
+        - 旅行・お出かけ
+        - 趣味・サークル・スポーツ
+        - 勉強会
+        - 地域活動・ボランティア
+        - その他
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 普段はどのように企画していますか？
+      description: 利用しているアプリや連絡方法など、公開してもよい範囲で教えてください。
+      placeholder: グループチャットで相談し、決まったことは別のメモに書いています。
+    validations:
+      required: true
+  - type: textarea
+    id: pain
+    attributes:
+      label: どんな情報が伝わりにくいですか？
+      description: 最近困った具体的な場面を一つ教えてください。
+      placeholder: 集合場所が変更されたのに、気づかなかった人がいました。
+    validations:
+      required: true
+  - type: textarea
+    id: ai
+    attributes:
+      label: AIチャット型ワークスペースに何を手伝ってほしいですか？
+      placeholder: 決まった予定や、昨日から変わったことをまとめてほしいです。
+  - type: dropdown
+    id: try
+    attributes:
+      label: 無料で試せるようになったら使ってみたいですか？
+      options:
+        - はい
+        - たぶん
+        - 今は考えていません
+    validations:
+      required: true

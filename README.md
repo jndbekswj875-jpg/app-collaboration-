@@ -1,84 +1,69 @@
 # Community AI Workspace
 
-> **Code available:** v0.1 local browser demo. This is not real multi-user chat or a connected AI service.
+**Stay connected. Share the plan. Make things happen together.**
 
-**Start coding:** Run `npm run check`, then `python3 -m http.server 4173`; open http://localhost:4173/app/ .
+We are designing a **free-to-use, AI-assisted chat workspace** for friends, personal events, and local communities. The goal is simple: help everyone find the right information at the right time, even when conversations move quickly and people cannot always reply immediately.
 
-**Project status:** [What currently works](docs/CURRENT_STATUS.md) · [Contributor setup](docs/DEVELOPER_GUIDE.md) · [Open tasks](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) · [App code](app/).
+**[日本語ページはこちら](README.ja.md)** · **[Tell us your event-planning problem](https://github.com/jndbekswj875-jpg/app-collaboration-/issues/new?template=feedback-en.yml)**
 
----
+> **We're still building it.** A local browser demo exists, but real multi-person chat and the AI assistant are not available as an online service yet. We intend to make the service free for personal and community use. No payment, subscription, or live account is being offered here.
 
-**Turn group conversations into clear event plans, shared tasks, and useful community connections.**
+## When the information is there—but no one can find it
 
-> **Project concept — collaborators and feedback welcome.** The real-time service and AI assistant are not yet deployed.
+Have you ever organized a birthday, trip, club meetup, study group, volunteer activity, or local event?
 
-**Read in Japanese:** [Japanese version](README.ja.md)  
-**Explore:** [System design](docs/SYSTEM_DESIGN.md) · [Development tasks](docs/BUILD_PLAN.md) · [Business validation](docs/MARKETING_VALIDATION.md) · [Contributing](CONTRIBUTING.md)
+Someone suggests a date in chat. Another person asks about the location. A third person joins late. Decisions get buried, people miss updates, and the organizer has to explain the same thing over and over.
 
-## Why build this?
+**The problem is the gap between talking together and understanding the same plan.**
 
-Organizing an event often means switching between group chats, RSVP forms, spreadsheets, personal messages, and payment tools. Decisions get buried in conversations. Organizers repeat the same answers, and participants do not know which plans are confirmed.
+## What we want to build
 
-**Our idea:** Put a private real-time group chat and a shared planning board in one web application, then add an AI assistant that helps people organize information rather than replacing human decisions.
+A shared space that combines **group conversation + an organized board + an AI chatbot assistant**.
 
-## How it could work
+- **Talk together.** Discuss an event or community project in one group chat.
+- **Find what matters.** Ask the AI assistant to summarize selected conversations so people can catch up faster.
+- **Share one clear plan.** Keep meeting details, confirmed decisions, tasks and unanswered questions in one place.
+- **Stay in sync.** Help people who join late or respond slowly understand what has changed.
+- **Organize your way.** Add simple event invitations and attendance responses when those features are useful.
 
-1. **Join a private group.** An organizer creates an invitation. Members can optionally set a profile with their display name, interests, Instagram or other social links, and privacy-controlled contact details.
-2. **Talk in a live chat room.** Group members discuss event ideas, dates, locations, budgets, and responsibilities.
-3. **Ask the AI assistant for help.** With appropriate member consent, select part of the discussion and request a structured summary.
-4. **Review a shared board.** AI suggests decisions, tasks, unanswered questions, and a possible timeline. Members correct mistakes and approve what is actually decided.
-5. **Run the event.** Add an event page, Yes/Maybe/No RSVP, preparation assignments, and optional expense/contribution records when the core workflow proves useful.
-6. **Build a returning community.** Members can share event stories and updates, then plan the next gathering.
+AI suggestions should remain drafts until people check and confirm them. Members should be able to control what private conversations the assistant may process.
 
-### Example: planning a BBQ
+## For example: organizing a weekend gathering
 
-| Chat message | AI-proposed board item |
+| Group conversation | What the workspace could show |
 | --- | --- |
-| “Is Saturday afternoon good?” | Possible date: Saturday; still needs confirmation |
-| “I can bring drinks.” | Proposed task: confirm who is bringing drinks |
-| “Maybe ¥2,000 per person.” | Budget suggestion only; not approved |
-| “Where are we meeting?” | Open question: meeting location |
+| “How about Saturday afternoon?” | Possible date — awaiting agreement |
+| “I can bring drinks!” | Suggested responsibility — needs confirmation |
+| “Where are we meeting?” | Open question — meeting place |
+| “Sorry, I missed the messages.” | A quick recap of what was decided and what's still open |
 
-The AI must distinguish **suggestions** from **confirmed decisions**. It cannot silently publish tasks, send messages, book services, or charge participants.
+**The goal is not to replace chats or friendships. It is to close the information gap that makes organizing together harder than it needs to be.**
 
-## What we would build first
+## We'd love to hear from you
 
-**First usable version:** Two invited members securely log in, exchange messages live across different browsers, and update a shared task/decision board. People outside the group cannot read private conversations. After that, test an on-demand AI summary that creates **draft suggestions** for human review.
+You don't need to know anything about programming. We want to understand **how you personally organize events and what frustrates you**.
 
-The first AI experiment can use an **OpenAI API or Anthropic Claude API** on the backend. These are usage-billed developer APIs, separate from consumer chat subscriptions. If usage grows, we can compare self-hosted open-weight models against paid APIs on output quality, Japanese-language performance, latency, hosting, hardware, electricity, and maintenance. A local model is not automatically cheaper.
+1. What kinds of events or group activities do you organize or join?
+2. Which apps do you use to communicate, invite people, and share plans?
+3. What information is often missed, repeated, or hard to find?
+4. What would you want an AI chat workspace to do for you?
+5. Would you be interested in trying a free early version when it's ready?
 
-```text
-Web chat and profiles
-        |
-Authentication, group permissions, message storage
-        |
-Real-time chat service <----> Shared event/task board
-        |
-AI gateway (only selected, permitted messages)
-        |
-Hosted model API -> structured drafts -> human review
-        |
-Later: evaluate self-hosted model if evidence supports it
-```
+**[Share your experience or request a feature →](https://github.com/jndbekswj875-jpg/app-collaboration-/issues/new?template=feedback-en.yml)**
 
-**Detailed specifications:** [System design](docs/SYSTEM_DESIGN.md) and [build plan](docs/BUILD_PLAN.md).
+GitHub feedback posts are public and usually require a GitHub account. Please describe your experience in general terms; **do not post real private chats, addresses, phone numbers, or other people's personal information.**
 
-## Website and business exploration
+## Want to see the idea in action?
 
-A useful, original article or project story on an existing website could introduce the problem, invite voluntary feedback, and lead to a small real-event test. We would measure the quality of visitor interest, organizer minutes saved, repeat use, AI errors, and operating cost.
+There is a small **single-browser interface demo** with sample conversations, a board, and rule-based draft suggestions. It is **not yet connected to a real AI model** and does not synchronize between people.
 
-Website advertising and a future paid event-organizer product are **different business models**. Advertising requires separate site approval and compliance; increased traffic does not guarantee approval or earnings. A paid product would require evidence that people repeatedly benefit and are willing to pay.
+- [See current development status](docs/CURRENT_STATUS.md)
+- [Open the demo source code](app/)
+- [Preview the demo in GitHub Codespaces](docs/PREVIEW.md)
+- [Detailed product idea](docs/PRODUCT_VISION.md)
 
-**Read more:** [Marketing and validation plan](docs/MARKETING_VALIDATION.md).
+### Free for personal and community use
 
-## Want to help build it?
+Our aim is to build something people can use without paying to organize their everyday gatherings. Right now we are learning what would genuinely help and testing a prototype—not asking anyone to buy anything.
 
-We welcome event organizers, designers, frontend and backend developers, AI engineers, testers, and people with experience in online communities. You can contribute an example of a real coordination problem, a wireframe, a technical suggestion, or a small implementation.
-
-- [Pick a development task](docs/BUILD_PLAN.md)
-- [Share feedback or propose an idea in GitHub Issues](https://github.com/jndbekswj875-jpg/app-collaboration-/issues)
-- [Read the contribution guide](CONTRIBUTING.md)
-
-Please do not put personal attendee details, real private chats, credentials, or payment records into this public repository. No project-wide code license has been selected yet; discuss ownership and licensing before significant code contributions.
-
-**Current state:** Public documentation and discussion only. The live group chat, AI backend, persistent member profiles, and payments have not been deployed.
+*The project also has a public developer workspace for people who want to explore the code: [developer guide](docs/DEVELOPER_GUIDE.md). That is separate from this user-feedback invitation.*
