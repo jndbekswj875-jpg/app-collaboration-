@@ -1,128 +1,109 @@
-# System design / システム設計
-*A practical proposal for collaborators — not a deployed system / 共同開発メンバー向けの設計案です。実装済みではありません。*
+# System Design: Community AI Workspace
 
-## 1. Core architecture / 全体の仕組み
+**Language:** [Japanese version](SYSTEM_DESIGN.ja.md)  
+**Status:** Proposed architecture for discussion. Nothing described here should be interpreted as deployed software.
+
+## Architecture
 
 ```text
-MEMBERS / メンバー
-  Phone / desktop browser
-           │ HTTPS
-           ▼
-WEB CLIENT / Web画面
-  - login, profile, group invitation / ログイン・プロフィール・招待
-  - real-time chat / リアルタイムチャット
-  - shared board / 共有ボード
-  - event/RSVP / イベント・出欠
-           │ authenticated API + realtime connection
-           ▼
-APPLICATION BACKEND / アプリのサーバー
-  ├─ Auth & group permission checks / 認証・アクセス権
-  ├─ Group/chat service / グループ・メッセージ
-  ├─ Board/event/RSVP service / ボード・イベント・出欠
-  ├─ Database / データベース
-  ├─ Realtime events / リアルタイム配信
-  └─ AI orchestration gateway / AI接続サーバー
-       ├─ consent & data minimization / 同意・送信範囲
-       ├─ API provider adapter / 外部AI API（初期）
-       │    ├─ OpenAI API
-       │    └─ Anthropic Claude API
-       ├─ proposed structured output / 提案の構造化
-       ├─ human review / 人による承認
-       └─ optional local-model adapter / 自前モデル（将来候補）
+Mobile/desktop browser
+   | 
+   v
+Web app: group invitation, profile, chat, board, event page
+   |
+   v
+Backend: authentication + group permissions + API
+   |---- Message database and group-scoped realtime delivery
+   |---- Shared task/decision board and RSVP records
+   |---- AI gateway: consent, selected messages, quotas, audit
+              |
+              |---- Hosted provider: OpenAI API or Anthropic Claude API
+              |---- Possible later: self-hosted open-weight model
+              |
+              v
+       Structured draft proposals -> human review -> confirmed board
 ```
 
-**EN:** A browser chat message is authenticated, permission-checked, saved in a database, then broadcast only to authorized group members. A separate user-requested AI action sends permitted excerpts through the server to an AI provider. The response is saved as a **draft**; an authorized user approves edits to the board. No provider keys belong in client-side JavaScript.
+## First usable version
 
-**日本語:** チャット送信時に認証とグループ所属を確認し、データベースに保存してから、閲覧権限のあるメンバーにリアルタイム配信します。AIを使う場合は、許可された会話の一部だけをサーバー経由で送信し、まず**下書き**として保存します。承認後に共有ボードへ反映します。APIキーをブラウザ側のコードには置きません。
+Two invited test users sign in from separate browsers, exchange group-only live messages, refresh without losing history, and update one shared board. Uninvited users are denied access to messages. Then add an AI experiment generating draft proposals from selected, permitted messages.
 
-## 2. Product modules / 機能モジュール
+### Functional modules
 
-| Component / 機能 | Behavior / 動作 | First version? / 初期版 |
-|---|---|---|
-| Login / ログイン | Secure email or social login; sessions / 安全なログイン・セッション | Yes / 必須 |
-| Groups / グループ | Invite links, member/organizer role, access checks / 招待・権限 | Yes / 必須 |
-| Chat / チャット | Message list, composer, live updates / 投稿・履歴・リアルタイム更新 | Yes / 必須 |
-| Board / 共有ボード | Manual tasks, decisions, open questions, approval state / タスク・決定事項・未解決項目 | Yes / 必須 |
-| AI assistant / AI | Selected-message summary → reviewable JSON proposals / 選択した会話→承認待ち提案 | First small pilot / 小規模テスト |
-| Events + RSVP / イベント・出欠 | Create event; Yes / Maybe / No and edit own RSVP / イベント作成・出欠変更 | After chat core / チャット後 |
-| Profiles / プロフィール | Optional bio, social links, visibility controls / 任意入力・公開範囲 | Minimal first / 最初は最小限 |
-| Stories / 投稿 | Group updates and photos / 投稿・写真共有 | Later / 後から |
-| Finances / 会費 | Estimated cost, amounts recorded, who confirmed payment / 見積・入金状況記録 | Later / 後から |
-| Payment / 決済 | Provider-hosted secure checkout (no card storage) / 外部決済事業者 | Later / 後から |
+| Module | Responsibility | Build order |
+| --- | --- | --- |
+| Authentication | Secure sessions, sign-in, user identity | First |
+| Group invitations | Invite links, expiration, member and moderator roles | First |
+| Real-time chat | Composer, message history, live broadcast, delivery errors | First |
+| Shared board | Tasks, proposed/confirmed decisions, unanswered questions | First |
+| AI assistant | User-triggered summarization and structured suggestions | Next |
+| RSVP | Yes/Maybe/No attendance and changes | After chat pilot |
+| Member profiles | Optional bios, interests, social links and contact visibility | Limited first, expand later |
+| Stories | Posts, updates, community memories | After demand |
+| Expenses/payments | Contribution records first, processor-hosted payment later | After demand |
 
-## 3. Data model / データ設計案
+## Proposed records
 
-- `users`: id, createdAt, auth identity / ユーザー情報
-- `profiles`: userId, displayName, optional social links, contactPreference, visibility / 公開範囲付きプロフィール
-- `groups`: id, ownerId, name, description / グループ
-- `group_members`: groupId, userId, role, joinedAt / 所属・役割
-- `group_invites`: groupId, tokenHash, expiry, permissions / 期限付き招待
-- `messages`: id, groupId, authorId, body, createdAt, deletedAt / チャット履歴
-- `board_items`: id, groupId, eventId?, type (task/decision/question), status (draft/confirmed), editor, sourceMessageIds? / 共有ボード項目
-- `events`: id, groupId, title, time, location, capacity, status / イベント
-- `rsvps`: eventId, userId, response, updatedAt, optionalPrivateAnswer / 出欠
-- `ai_requests`: requester, groupId, scopedMessageIds, provider, model, tokenUsage, estimateCost, status / AI実行履歴
-- `ai_suggestions`: requestId, draftItems, reviewer, decision, reviewedAt / 承認待ちAI提案
+- `users`: authentication reference and account creation.
+- `profiles`: display name, optional bio, interests, social links, visibility controls.
+- `groups`: group owner, name, description and privacy settings.
+- `group_members`: member roles and permissions.
+- `invitations`: group identifier, hashed token, expiry and usage rules.
+- `messages`: group identifier, author, body, timestamps and deletion status.
+- `board_items`: group/event, type (task/decision/question), status (draft/confirmed), proposed assignee and source references.
+- `events`: group, title, time, venue, capacity and status.
+- `rsvps`: event, participant, response, update time, private optional answers.
+- `ai_requests`: requester, permitted message IDs, provider, model, usage and status.
+- `ai_suggestions`: AI proposal, human reviewer and approval history.
 
-**EN:** Every read and mutation is authorized server-side; do not rely only on hiding UI buttons. Add indexes and per-group data isolation. Profiles/contact details and optional RSVP reasons require separate access policies.
+Enforce authorization server-side on **every read and write**. Hide private group information from public pages, and restrict visibility of social contacts and RSVP absence reasons separately.
 
-**日本語:** ボタンの非表示だけで権限管理を行わず、**サーバー側で毎回確認**します。グループごとにデータを隔離し、連絡先や欠席理由などは別の公開ルールで保護します。
+## Real-time message lifecycle
 
-## 4. Chat → AI → board / 会話から共有ボードへ
+1. Authenticate the sender and verify group membership.
+2. Validate content and enforce abuse/rate limits.
+3. Store the message transactionally with server timestamp and group ID.
+4. Publish a realtime event only to authorized group subscribers.
+5. Recheck membership on subscriptions and reads; support reconnection and duplicate-delivery handling.
+6. Let moderators manage group membership, reporting and removal.
 
-1. **Talk / 会話する:** Members send normal real-time messages.
-2. **Select & consent / 選択・同意:** An authorized member selects an event and a permitted message range. Explain what will be sent to a third-party provider. Group members must have an appropriate way to consent or opt out.
-3. **Request / 依頼:** Server sends the minimum necessary selected messages with instructions to extract **proposals**, not assert consensus.
-4. **Return structured draft / 下書き:** JSON-like output with `items[]`: `type`, `text`, `proposedAssignee`, `sourceMessageIds`, `confidenceOrUncertain`. Validate returned structure before storage.
-5. **Human review / 人が確認:** Organizer or authorized participants edit/approve/reject. Conflicts and uncertainties stay visible.
-6. **Board update / 反映:** Only approved items become confirmed tasks/decisions. Notification sending and external actions require separate authorization.
-7. **Audit / 記録:** Track requester, scope, provider cost, approval time and revisions without making private content public.
+## AI-to-board lifecycle
 
-**Example / 例:** “Saturday works for me” is an *availability signal*, not a confirmed date. 「土曜なら大丈夫」は参加可能性の情報であり、全員が承認した日程ではありません。
+1. An authorized member requests a summary, selecting an event and message range.
+2. The server checks group permissions and the agreed rules for sending those messages to the selected AI provider. Members must understand and be able to decline the AI processing scope.
+3. Send only the minimum necessary permitted context from the backend.
+4. Request structured proposals of tasks, decisions, open questions, suggested owners and source message IDs.
+5. Validate the response schema; flag uncertain or conflicting statements.
+6. Store suggestions as **drafts**, not confirmed decisions.
+7. A human edits, accepts or rejects each suggestion.
+8. Track usage, request costs and approval history in a protected audit log.
 
-## 5. AI provider strategy / AIの段階的導入
+**Example:** “Saturday works for me” must not become “The event is confirmed for Saturday” without further agreement.
 
-### Step A — Hosted API first / 最初は外部API
-**EN:** Use an OpenAI API **or** Claude API server adapter to prove a narrow task: can an AI find correct proposed decisions/tasks from a short permissioned group chat? Maintain an interchangeable interface, e.g. `summarizeEvent(messages, context)`, so experiments do not lock the chat application to one model.
+## AI cost strategy
 
-**日本語:** 最初はOpenAI APIまたはClaude APIをサーバーから利用し、許可された短いチャットから正確な要約・タスク候補を作れるか検証します。モデル依存を減らすために共通の呼び出しインターフェースを使います。
+**Initial provider:** Use a server-only adapter to OpenAI API or Anthropic Claude API. Keys live in server-side secrets management, never client code or public repositories. Limit prompt length, calls per member/group, total spending, and unnecessary historical context. Measure cost per **useful human-approved summary**, not merely cost per generated response.
 
-**Controls / 費用・安全対策:** per-user/group request quota, short selected context, no unnecessary historical chat, token budgets, provider spend cap, caching of authorized repeated requests, server-side API keys, logged token/cost estimate, manual review.
+**Later comparison:** After real usage is known, benchmark a self-hosted, properly licensed open-weight model on the **same synthetic or permissioned test cases**. Evaluate accuracy, false decisions, English and Japanese reliability, response latency, CPU/GPU and memory needs, hosting/electricity costs, updates, privacy, and engineering time.
 
-### Step B — Compare local/open-weight AI / 自前モデルの比較
-**EN:** Only after actual usage shows meaningful costs, benchmark a self-hosted open-weight model using the **same anonymized test cases**. Compare accuracy, false tasks/decisions, Japanese–English quality, latency, memory/GPU needs, hosting and electricity, model licenses, engineering maintenance, uptime, and privacy. Choose based on total monthly cost and quality, not just “free inference”.
+**Decision:** Choose hosted, local, or hybrid based on measured total cost and service quality. Local inference is not inherently free.
 
-**日本語:** 実際にAPI利用量が増えたら、同じ匿名化テストデータを使って自前で動かすオープンウェイトモデルと比較します。判断材料は要約の正確さ、日本語・英語の品質、応答速度、GPU/サーバー・電気代、モデルライセンス、保守時間、プライバシーなどです。**必ず安くなるとは限りません。**
+## Candidate tools (not selected)
 
-**Possible hybrid / 併用案:** Small local model for simple tagging/summaries, hosted API for ambiguous or harder requests, with user-visible policy and cost reporting. / 簡単な分類はローカルモデル、難しい相談は外部APIという併用も検討できます。
+A TypeScript web client, a managed authentication/PostgreSQL/realtime backend, and a server-side AI adapter are plausible options. Examples include Next.js and Supabase, but contributors should evaluate maintenance, cost, portability, accessibility and actual security requirements rather than assuming these tools are mandatory.
 
-**Important / 注意:** A ChatGPT subscription is separate from OpenAI API billing. / ChatGPTの月額契約とOpenAI APIの料金は別です。
+## Privacy and security baseline
 
-## 6. Privacy, security and safety / プライバシー・安全
+- Private groups by default, role-based access and revocable invites.
+- Explicit data-sharing controls for each optional profile field.
+- Consent and transparent retention/deletion for chat content processed by an AI provider.
+- No scraping historical private LINE or Instagram messages.
+- No unapproved AI messages, reservations, financial transfers or public disclosure of private information.
+- Abuse reporting, message deletion, rate limiting and access-control tests.
+- Established payment processors for future actual payments; no sensitive card storage.
 
-- Private groups and member-controlled profile fields by default / 非公開グループ・公開範囲の選択
-- Roles, expiring invitations, rate limits, abuse reporting, block/remove workflows / 権限・招待期限・スパム対策
-- Server-side access checks and secure credentials / サーバー認証・秘密情報の保護
-- Explicit consent before third-party AI processes selected chat messages / 外部AIへ送信する前の明確な同意
-- Data retention, export/deletion and logs appropriate to the use case / 保存期間・削除対応
-- Manual approval before creating official tasks or sending messages / 正式な決定や送信前に人が承認
-- No automated scraping/importing of historical private LINE or Instagram conversations / LINE・Instagramの私的履歴を勝手に取り込まない
-- No processing payment card details or holding members' money ourselves / カード情報や預り金を自社保有しない
+## Prototype acceptance test
 
-## 7. Suggested technology, not selected / 技術候補（未決定）
+Two authorized browsers exchange live messages, refresh history and share a board task; an outsider is unable to read or mutate the data. With permission, an AI call creates reviewable drafts without changing official board data. Test both typical and adversarial authorization cases.
 
-- **Frontend / 画面:** TypeScript web application, React/Next.js as one candidate.
-- **Database & realtime / DB・配信:** PostgreSQL + managed realtime/auth (e.g. Supabase), or another stack collaborators can operate safely.
-- **Server / バックエンド:** API routes/services enforcing roles and validating AI output.
-- **AI / AI接続:** Swappable OpenAI/Anthropic adapter, later optional self-hosted inference server.
-- **Deployment / 公開:** Test in a separate staging environment first; integrate with an existing owned website only after secure configuration and real user testing.
-
-**EN:** This document describes behavior, not a mandate to install every technology. Build and test one working vertical slice before selecting a complex platform.
-
-**日本語:** 全部の技術を最初から導入する必要はありません。小さく「動くチャット＋確認できるボード」を作り、試してから次を決めます。
-
-## 8. Acceptance test for the first real prototype / 最初の完成条件
-
-Two consenting test users can sign in, join the same private group, send and receive messages live from different browsers, and create/edit a shared board task; an outsider cannot read their messages. Optionally, with consent, one user runs an AI summary on selected messages and sees a reviewable **draft**, without sending external messages or changing the official board automatically.
-
-同意した2人が別々のブラウザでログインし、同じ非公開グループに参加して、メッセージをリアルタイムに送受信できること。権限のない人が閲覧できないこと。共有ボードへタスクを作成・編集できること。AIテストでは承認前の**下書き**だけが表示され、自動で正式な決定にならないこと。
+**Related:** [Development tasks](BUILD_PLAN.md) · [Product vision](PRODUCT_VISION.md).
