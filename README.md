@@ -1,5 +1,13 @@
 # Community AI Workspace
 
+> **Code available:** v0.1 local browser demo. This is not real multi-user chat or a connected AI service.
+
+**Start coding:** Run `npm run check`, then `python3 -m http.server 4173`; open http://localhost:4173/app/ .
+
+**Project status:** [What currently works](docs/CURRENT_STATUS.md) · [Contributor setup](docs/DEVELOPER_GUIDE.md) · [Open tasks](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) · [App code](app/).
+
+---
+
 **Turn group conversations into clear event plans, shared tasks, and useful community connections.**
 
 > **Project concept — collaborators and feedback welcome.** The real-time service and AI assistant are not yet deployed.

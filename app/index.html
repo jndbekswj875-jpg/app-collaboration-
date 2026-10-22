@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#121b31" />
+  <title>Commonroom — Community AI Workspace (Local Demo)</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer type="module" src="./src/main.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Community navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">◎</div>
+        <div><strong>commonroom<span class="brand-dot">.</span></strong><small>Community workspace</small></div>
+      </div>
+      <div class="sidebar-label">YOUR GROUPS <span class="count" id="group-count">2</span></div>
+      <nav id="groups-list" class="groups" aria-label="Groups"></nav>
+      <form id="group-form" class="group-form">
+        <label for="group-name">Create a demo group</label>
+        <div class="compact-form">
+          <input id="group-name" name="groupName" maxlength="45" placeholder="Group name" required />
+          <button class="mini-button" title="Create group" aria-label="Create group" type="submit">+</button>
+        </div>
+      </form>
+      <div class="sidebar-bottom">
+        <div class="demo-notice"><span class="status-dot"></span><div><strong>Local prototype</strong><small>Only this browser sees your changes</small></div></div>
+        <button id="profile-button" class="profile-button" type="button"><span class="avatar">Y</span><span><strong id="profile-name">You</strong><small>Manage demo profile</small></span><span class="arrow">↗</span></button>
+        <button id="reset-button" class="text-button" type="button">Reset sample data</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div><p class="eyebrow">COMMUNITY / GROUP WORKSPACE</p><h1 id="current-group-name">Saturday Social</h1><p class="subtext" id="current-group-description">Plan the next meetup together.</p></div>
+        <span class="stage-pill">Prototype · v0.1</span>
+      </header>
+      <section class="chat-card" aria-label="Group chat">
+        <div class="section-heading"><div><h2><span class="heading-icon">◉</span> Group conversation</h2><p>Write a message and see it appear here. This is a single-browser demo.</p></div><span class="subtle-pill">Chat UI</span></div>
+        <div id="messages" class="messages" aria-live="polite" aria-relevant="additions"></div>
+        <form id="chat-form" class="chat-compose">
+          <label class="sr-only" for="chat-message">Your message</label>
+          <input id="chat-message" name="message" maxlength="1200" autocomplete="off" placeholder="Share an idea or ask a question…" required />
+          <button type="submit" class="primary-button">Send <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="chat-tip">Demo messages are stored in localStorage. No login, server, or live group syncing yet.</div>
+      </section>
+      <section class="event-card">
+        <div class="event-mark" aria-hidden="true">✳</div>
+        <div class="event-content"><p class="eyebrow">UPCOMING EVENT · DEMO</p><h2 id="event-title">Next meetup</h2><p class="subtext">Date and place to be confirmed by the group</p></div>
+        <div class="rsvp-field"><label for="rsvp-select">Your RSVP (local)</label><select id="rsvp-select"><option value="">Not answered</option><option value="yes">Going</option><option value="maybe">Maybe</option><option value="no">Can't go</option></select></div>
+      </section>
+    </main>
+
+    <aside class="workspace-area" aria-label="Shared board and organizer assistant">
+      <div class="right-heading"><p class="eyebrow">WORKSPACE</p><h2>Shared board</h2><p>Turn the conversation into clear next steps.</p></div>
+      <div class="board-section">
+        <div class="inline-heading"><h3>Tasks &amp; decisions</h3><span id="board-count" class="count">0</span></div>
+        <div id="board-list" class="board-list"></div>
+        <form id="task-form" class="task-form">
+          <label for="task-text">Add an item manually</label>
+          <div class="compact-form"><input id="task-text" maxlength="140" placeholder="e.g. Confirm the meeting place" required /><button class="mini-button" title="Add item" aria-label="Add task" type="submit">+</button></div>
+        </form>
+      </div>
+      <div class="assistant-card">
+        <div class="assistant-icon" aria-hidden="true">✦</div>
+        <p class="eyebrow">ORGANIZER ASSISTANT</p><h3>Find the next step</h3>
+        <p>Generate reviewable draft suggestions from chat messages. This version uses simple rules — <strong>not a live AI API</strong>.</p>
+        <button id="suggest-button" class="secondary-button" type="button">✦ Generate draft suggestions</button>
+        <div id="suggestions" class="suggestions" aria-live="polite"></div>
+      </div>
+      <p class="workspace-footnote">Drafts require your approval before joining the board. <a href="../docs/CURRENT_STATUS.md">See actual build status ↗</a></p>
+    </aside>
+  </div>
+
+  <dialog id="profile-dialog" class="profile-dialog">
+    <form id="profile-form" method="dialog">
+      <div class="dialog-header"><div><p class="eyebrow">PERSONAL SETTINGS</p><h2>Demo profile</h2></div><button id="close-profile" class="close-button" type="button" aria-label="Close dialog">×</button></div>
+      <p class="subtext">These values are stored only in this browser. Do not enter personal information in a shared/public computer.</p>
+      <label for="display-name">Display name</label><input id="display-name" maxlength="40" required />
+      <label for="social-profile">Social profile (optional)</label><input id="social-profile" maxlength="140" placeholder="Optional username or link" />
+      <div class="dialog-actions"><button type="button" id="cancel-profile" class="secondary-button">Cancel</button><button type="submit" class="primary-button">Save profile</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

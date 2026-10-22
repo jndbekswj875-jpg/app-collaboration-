@@ -1,0 +1,15 @@
+{
+  "name": "community-ai-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Dependency-free local browser chat and task board demo",
+  "scripts": {
+    "test": "node --test app/tests/*.test.js",
+    "check": "node --check app/src/logic.js && node --check app/src/main.js && npm test",
+    "start": "python3 -m http.server 4173"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

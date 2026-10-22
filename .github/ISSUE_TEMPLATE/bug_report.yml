@@ -1,0 +1,22 @@
+name: Bug report
+description: Tell collaborators about a reproducible problem.
+title: "[Bug] "
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce with synthetic data only
+    validations:
+      required: true
