@@ -43,6 +43,13 @@ body:
     validations:
       required: true
   - type: textarea
+    id: ticketing
+    attributes:
+      label: 無料イベントと有料チケット、どちらを開催・利用しますか？
+      description: 現在使っている出欠・チケット販売サービスや、一つにまとまると便利なことを教えてください。チケットコードや決済情報は書かないでください。
+      placeholder: 普段は無料の集まりですが、ワークショップでは別のサイトでチケットを販売しています。
+
+  - type: textarea
     id: ai
     attributes:
       label: AIチャット型ワークスペースに何を手伝ってほしいですか？

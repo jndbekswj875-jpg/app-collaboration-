@@ -33,6 +33,21 @@
 
 **Security boundary:** All current group content is sample/local browser content. Do not enter sensitive personal information into this prototype, and never describe it as a secure group chat service.
 
+## New product direction, not yet implemented
+
+The [central product blueprint](PRODUCT_BLUEPRINT.md) now also describes **ticket selling**, digital entry, a hosted-model-first **AI organizer and marketing assistant**, and possible later self-hosted/adjusted AI models. All of these remain **planned**:
+
+- [ ] Public event pages with actual audience-facing publishing.
+- [ ] Free registration and server-backed RSVP at real events.
+- [ ] Ticket offers, accurate inventory, payment-provider checkout, confirmed issuance, and staff check-in.
+- [ ] Payment refunds, seller policies, fees, compliance and financial reporting.
+- [ ] Real OpenAI/Claude API integration and approved organizer/marketing drafts.
+- [ ] Measured own-model or self-hosted AI evaluation.
+- [ ] Real notification sending, external promotion or marketing automation.
+
+**Reminder:** This repository's existing “AI” suggestions are keyword rules only; no provider keys, charging capabilities or real attendee data are included. See [detailed roadmap](APP_ROADMAP.md).
+
+
 ## Run it on your computer
 
 From the project root, run:

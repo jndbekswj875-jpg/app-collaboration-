@@ -62,6 +62,30 @@ Two invited people on separate devices can log in securely, discuss an event, an
 
 **Current reality:** The existing v0.1 repository demo implements only a single-browser interface, local messages and local board state. Authentication, real-time multi-user sharing and backend storage are not finished.
 
+## Ticket sales module — optional paid events, independent of AI
+
+After secure event pages, membership and attendee communication work, add ticket selling as a **separate event module**. A free meetup must remain usable without checkout.
+
+| Workstream | Build requirement | Done when |
+| --- | --- | --- |
+| T-01 Ticket offers | Organizer configures free/paid ticket types, currency, sale windows, per-order limits and capacity | Availability shown correctly and validated on server |
+| T-02 Orders and inventory | Create pending orders, reserve available inventory safely, expire abandoned reservations | Concurrent buyers cannot oversell the event |
+| T-03 Checkout | Send buyer to an approved external payment processor; show total charges and applicable terms before confirmation | Secure provider test checkout works without storing card numbers |
+| T-04 Payment verification | Authenticate provider webhooks, deduplicate events, reconcile payment status and order totals | Ticket never issued just because browser says “success” |
+| T-05 Ticket issuing | Issue a unique ticket/QR or entry code after authoritative confirmation | Each paid or free ticket has valid ownership and status |
+| T-06 Event entry | Verify check-in server-side and prevent replay or unauthorized reuse | Staff can distinguish valid, refunded and already-used tickets |
+| T-07 Refunds and support | Cancellations, refunds, transfers (if enabled), support and reconciliation | Accurate state after refunds; documented attendee policies |
+| T-08 Compliance and reporting | Clear fee, price, tax and seller disclosures as applicable; organizer payouts and audit trail | Reviewed policies and correct financial/reporting records |
+
+**Provider choice is still open.** Ticketing requires payment-service agreements, security tests and applicable consumer, tax and seller obligations. No live transactions, merchant account or fee rate is currently configured.
+
+**Product economics:** The intended free basic workspace and paid tickets are not contradictory: an attendee may pay an event organizer for admission, not for using basic chat. Any future platform/processor fees need an explicit decision and disclosure.
+
+**Dependencies:** authentication and roles → saved event details → reliable attendee records → order/inventory backend → processor confirmation → issuance/check-in. AI must not have payment credentials, change ticket prices, issue tickets or initiate refunds without tightly scoped human authorization.
+
+[Single product blueprint](PRODUCT_BLUEPRINT.md) · [Event hub experience](EVENT_HUB_CONCEPT.md).
+
+
 ## Stage 2 — Integrate the AI event-organizer assistant
 
 **Goal:** Make routine organizing work lighter once the basic chat and shared workspace are reliable.

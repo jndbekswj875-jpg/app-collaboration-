@@ -49,6 +49,19 @@ The AI would use only selected and authorized information, show where suggestion
 
 **Order matters:** Chat and event information → shared manual board → secure realtime access → permissioned AI summaries → reviewable task/reminder suggestions → optional, approved workflows. See the [detailed two-stage roadmap](APP_ROADMAP.md).
 
+## Ticket sales and the AI marketing assistant
+
+Some community events will remain free; others may charge admission. The planned ticket module should allow an organizer to offer free RSVP or paid ticket types, with inventory, trusted payment-provider checkout, verified payment confirmation, unique issuance and safe check-in. Clear prices, fees, refund policies and attendee privacy must be defined before ticketing launches.
+
+This is distinct from charging people to use the basic community workspace: the aim remains free core planning and communication.
+
+The eventual **AI marketing assistant** could help draft accurate promotional descriptions, suggest event announcements, summarize common questions, and explain aggregated event interest or ticket counts if appropriate tracking exists. The AI should work from confirmed event information and operate within explicit approval, consent and anti-spam boundaries. It should not autonomously contact attendees, buy ads, change prices or issue refunds.
+
+**Development route:** secure shared chat → event hub → optional tickets → existing hosted model adapter for AI → quality/cost comparison and potential self-hosted or customized model. Ticketing and AI can become independent modules after their common foundations exist.
+
+[Full product blueprint](PRODUCT_BLUEPRINT.md).
+
+
 ## What's important to us
 
 - **Shared understanding:** Everyone can find the current plan even if they missed part of the chat.

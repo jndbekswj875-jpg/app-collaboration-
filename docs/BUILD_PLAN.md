@@ -54,6 +54,40 @@ These features expand the **chat-first workspace**, before any AI assistant or t
 
 [Event hub concept](EVENT_HUB_CONCEPT.md). This is a roadmap, not a claim that these capabilities are already live.
 
+## Workstream: ticket selling and secure event entry (independent module)
+
+Add a ticket-selling module **after** the core event hub works. Free events and manual planning must remain available without it.
+
+| ID | Task | Definition of done |
+| --- | --- | --- |
+| T-01 | Free/paid ticket types, amounts, limits, event capacity, selling window | Organizer can configure ticket offers; server validates availability |
+| T-02 | Buyer orders and safe inventory reservation | Parallel purchases cannot oversell; abandoned orders expire |
+| T-03 | Payment-provider checkout and price disclosure | Test payment uses a provider, with totals and rules visible; no card data stored |
+| T-04 | Verified webhook and idempotent payment/order reconciliation | Only authoritative confirmed payments trigger paid ticket issuance |
+| T-05 | Digital ticket issuance and owner visibility | Unique QR or code with server-verifiable state |
+| T-06 | Staff check-in and anti-reuse controls | Invalid, refunded and used tickets rejected appropriately |
+| T-07 | Refund, cancellation, transfer policy and attendee support | Correct state transitions, clear policy and reconciliation |
+| T-08 | Financial summaries, organizer payout considerations and applicable legal/policy review | Accurate restricted records and pre-launch approval |
+
+**Dependency:** Secure users/groups (#6), messaging (#7), shared board (#8), event hub (#17). Coordinate ticket data and access rules before implementation. Do not introduce live charges until a payment provider and all required review steps are selected.
+
+## Workstream: AI model strategy and marketing-agent safety
+
+**Existing hosted model first:** A-01–A-09 cover consented assistant integration, accurate summaries, FAQ and reminder drafts. Expand evaluation to accurate promotional copy, bilingual event descriptions and approved replies, always grounded in confirmed data.
+
+| ID | Task | Definition of done |
+| --- | --- | --- |
+| M-01 | Provider-neutral AI service interface | Hosted model can be switched without rewriting chat or payment modules |
+| M-02 | Measure hosted API outputs in English and Japanese | Quality, false statements, approval effort, latency and unit cost documented |
+| M-03 | Benchmark appropriately licensed self-hosted or adapted open-weight model | Same safe test cases, including full compute and maintenance cost |
+| M-04 | Choose hosted, own-model or hybrid based on evidence | Documented go/no-go decision; quality and safety do not regress |
+| M-05 | Control AI marketing actions | External publication, contact, discounts and financial changes require explicit authorization |
+
+**No AI access to payment secrets** and no unapproved marketing spam. Treat attendee messages and purchase records as private and purpose-limited.
+
+[Central product blueprint](PRODUCT_BLUEPRINT.md).
+
+
 ## Workstream 3: first AI experiment
 
 | ID | Task | Definition of done |

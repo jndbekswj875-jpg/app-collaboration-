@@ -43,6 +43,13 @@ body:
     validations:
       required: true
   - type: textarea
+    id: ticketing
+    attributes:
+      label: Do you organize free events, paid ticketed events, or both?
+      description: Which ticket platforms or registration tools do you use? What would be easier if ticketing and group chat were together? Do not share ticket codes or payment details.
+      placeholder: Our club has free meetups but sells tickets for workshops; we use a separate ticket site...
+
+  - type: textarea
     id: ai
     attributes:
       label: What should an AI chat workspace help you with?
