@@ -4,7 +4,7 @@
 
 > **Project concept — collaborators and feedback welcome.** The real-time service and AI assistant are not yet deployed.
 
-**Read in Japanese:** [日本語版](README.ja.md)  
+**Read in Japanese:** [Japanese version](README.ja.md)  
 **Explore:** [System design](docs/SYSTEM_DESIGN.md) · [Development tasks](docs/BUILD_PLAN.md) · [Business validation](docs/MARKETING_VALIDATION.md) · [Contributing](CONTRIBUTING.md)
 
 ## Why build this?
