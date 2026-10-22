@@ -4,6 +4,29 @@
 
 The Community AI Workspace is intended to be **free for personal and community use**. This document focuses on listening to potential users and testing whether a chat-based shared workspace actually helps. It is not a pricing plan or an invitation to hire developers.
 
+## Event promotion is part of the workspace itself
+
+This application can be an **event promotion and attendee communication hub**, not simply a private planning tool. The central use case is for an organizer to create an event, share its link, welcome interested people, communicate directly with attendees, and deliver changes in one controlled place.
+
+**Visitor / attendee journey:** See event title and description → understand time, place and participation rules → choose to RSVP or request an invitation → ask a question → follow confirmed announcements → attend the event → optionally give feedback afterward.
+
+**Organizer journey:** Create the event → share a link through appropriate existing channels → see interest and RSVPs → answer participant questions → publish one verified update → coordinate preparation in the same workspace → review feedback.
+
+Public event information should remain separate from private attendee chat. An app cannot guarantee marketing reach merely by centralizing tools: organizers still need an audience and a way to share their event link. Automatic posting, emails, calls and advertising across third-party platforms are not supported now.
+
+### What to learn from real users
+
+- How many different apps or channels were required to organize the last event?
+- Where did interested people first discover it?
+- How often did organizers repeat the same answer or resend changes?
+- Did people fail to notice a schedule, location or meeting-point update?
+- Would one shareable event page plus direct chat make communication easier?
+- Which reminders should be optional or require explicit approval?
+
+**Potential evidence:** repeated-tool-switching reduced, fewer duplicate questions, clearer RSVP status, timely understanding of updates, more successful check-ins and organizer willingness to run another event. These are hypotheses to test, not measured results.
+
+[Detailed event-promotion and attendee communication concept](EVENT_HUB_CONCEPT.md)
+
 ## What we want to learn
 
 1. **Who experiences the information gap?** Friends, clubs, local organizers, study groups, sports groups, families or volunteers.

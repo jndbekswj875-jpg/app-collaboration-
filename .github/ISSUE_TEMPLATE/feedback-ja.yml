@@ -29,6 +29,12 @@ body:
     validations:
       required: true
   - type: textarea
+    id: promotion
+    attributes:
+      label: イベントの告知や参加者との連絡には、どんなサービスを使っていますか？
+      description: 告知、招待、質問対応、出欠確認、変更のお知らせをするとき、いくつのアプリを使い分けていますか？公開してもよい範囲で教えてください。
+      placeholder: SNSでイベントを知らせ、チャットで相談し、出欠は別のフォームで確認しています。
+  - type: textarea
     id: pain
     attributes:
       label: どんな情報が伝わりにくいですか？

@@ -33,6 +33,27 @@ Two invited users can join a private group, send messages in real time in separa
 | B-02 | Separate suggested, disputed, and confirmed states clearly. | Drafts cannot be mistaken for accepted decisions |
 | B-03 | Test simultaneous edits, history, member permissions. | Expected conflict and access behavior is documented |
 
+## Workstream: event promotion and direct attendee communication
+
+These features expand the **chat-first workspace**, before any AI assistant or third-party integration is required.
+
+| ID | Task | Definition of done |
+| --- | --- | --- |
+| H-01 | Event create/edit page: title, description, date/time, place, organizer, optional capacity | Authorized organizer can publish a saved event page; changes are persisted |
+| H-02 | Public event link and visibility controls | Public event summary is shareable, while invite-only details and private chat are server-protected |
+| H-03 | Event-scoped attendee questions and organizer answers | Authorized attendee and organizer communicate in the same workspace across devices |
+| H-04 | Real-time event announcements and confirmed-detail updates | Attendees see newest confirmed information, with timestamps and safe reconnect handling |
+| H-05 | RSVP, membership and relevant event dashboard | Organizer sees accurate counts and attendee progress only as permitted |
+| H-06 | Optional notification preferences and delivery | Attendees opt in/out; delivery status, abuse controls and failure behavior are testable |
+| H-07 | Organizer-to-attendee feedback and moderation | Questions, reports, and announcements obey group permissions and privacy controls |
+| H-08 | Integration feasibility for calls, outgoing email or external promotion | Do not implement until user needs, provider costs and consent boundaries are assessed |
+
+**Ordering:** C-02/C-03 secure groups and messaging → H-01/H-02 event page and visibility → H-03/H-04 direct communication and updates → H-05 attendance → optional H-06/H-08 notifications or external integration → A-01 onward AI assistance.
+
+**AI integration after this foundation:** Summarize permitted attendee questions, prepare a frequently asked questions draft from confirmed event facts, suggest responses and announcements, and let the organizer approve all outgoing communication.
+
+[Event hub concept](EVENT_HUB_CONCEPT.md). This is a roadmap, not a claim that these capabilities are already live.
+
 ## Workstream 3: first AI experiment
 
 | ID | Task | Definition of done |
