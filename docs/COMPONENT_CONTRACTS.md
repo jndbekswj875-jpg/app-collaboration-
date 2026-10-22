@@ -30,6 +30,30 @@ Different friends can build the chat UI, shared board, backend and AI adapter in
 | reviewAiDraft | suggestion ID, approve/edit/reject | authorized review, separate from draft creation |
 | updateRsvp | event ID, own RSVP | response changed for current authenticated user only |
 
+## Proposed ticket/order and AI interfaces
+
+These operations are **design proposals**, not deployed API endpoints. Agree on authorization, idempotency and state transitions before implementing.
+
+| Operation | Input | Authorized behavior |
+| --- | --- | --- |
+| createTicketType | organizer session, event ID, price/currency, capacity and sale window | Only permitted event host can publish offers |
+| listTicketOffers | event ID | Returns only offers visible to the visitor |
+| createOrder | authenticated buyer or approved guest session, ticket offer and quantity | Atomically reserve valid inventory and return pending order |
+| startCheckout | pending order ID | Initiate provider-hosted checkout, never expose processor secrets |
+| confirmPaymentWebhook | verified provider event | Deduplicate and reconcile order state; issue ticket only for confirmed payment |
+| getMyTickets | authenticated buyer | Only purchaser/authorized attendee sees ticket and entry code |
+| checkInTicket | event ID, ticket code, authorized staff | Atomic check-in; reject reused/refunded/invalid codes |
+| requestRefund | valid order/ticket, requester with appropriate role | Apply policy and provider workflow; preserve audit trail |
+| requestOrganizerDraft | authorized event context and consent scope | Return reviewable AI summary/task/marketing copy, no action taken |
+| approveMarketingAction | explicit organizer approval of draft | Separate permissioned send/publish operation, with opt-in rules |
+
+**Suggested domain boundaries:** `groupService`, `eventService`, `messageService`, `ticketOrderService`, `paymentProviderAdapter`, `aiModelAdapter`, `marketingDraftService`. Do not make the AI adapter depend on any one hosted model; do not let it directly mutate inventory, prices or payment state.
+
+**Ticket schema:** Each ticket type belongs to one event; each order has an owner, currency, payment state and immutable quoted amount; issued tickets link to the confirmed order item with unique codes and status; check-in and refund states are auditable. Group chat message data should not be exposed to payment processors.
+
+[Single product blueprint](PRODUCT_BLUEPRINT.md).
+
+
 ## Data and safety rules
 
 1. Never use a client-supplied user ID as proof of identity; obtain it from the authenticated session.

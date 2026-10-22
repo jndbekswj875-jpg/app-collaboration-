@@ -56,6 +56,23 @@ Possible visibility modes:
 
 Announcements, replies and joining a group require abuse controls, authentication or appropriate guest verification, reporting and moderation. Sharing a link alone must not grant access to confidential group messages.
 
+## Ticket selling belongs inside the event experience (planned)
+
+The same event workspace can support a **free registration** or **ticketed attendance**, without forcing participants onto unrelated pages for basic information.
+
+- Organizer defines ticket categories, price, currency, limits and purchase period.
+- Attendee views availability and a clear total price before purchase.
+- Secure payment runs through an established processor, with server-side verification and duplicate prevention.
+- A unique ticket or entry code appears in the attendee's event workspace once the order is confirmed.
+- Staff can check in valid tickets; refunds, cancellations and attendee help follow published rules.
+
+**No ticketing system is implemented today.** The team must first plan inventory consistency, payment security, refunds and seller terms. The event's public marketing page and its private ticket orders should have separate permissions. A free event should remain usable without payment.
+
+After the system works, the **AI organizer / marketing assistant** can draft event descriptions, FAQs, reminders and follow-up messages based on confirmed information. It cannot make purchases, change prices, initiate refunds or contact people without authorization.
+
+[Central product blueprint](PRODUCT_BLUEPRINT.md).
+
+
 ## Where the AI assistant fits — after the basic workspace
 
 After secure event pages, chat and shared updates are reliable, the **AI event-organizer assistant** can help:

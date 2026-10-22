@@ -27,6 +27,22 @@ Public event information should remain separate from private attendee chat. An a
 
 [Detailed event-promotion and attendee communication concept](EVENT_HUB_CONCEPT.md)
 
+## Free communities, ticketed events, and AI-assisted promotion
+
+The marketing tool has **two complementary uses**:
+
+1. A host shares an accurate public event page and communicates directly with interested visitors and authorized attendees. This supports free community gatherings without requiring any ticket purchase.
+2. If a host chooses a **paid event**, the same event page can later offer ticket types and secure purchase flow. Track *actual* verified purchases separately from page visits, RSVPs and expressions of interest.
+
+**Potential funnel:** Event link viewed → relevant visitor understands the event → inquiry or RSVP → optional checkout → verified paid ticket issued → check-in → attendee feedback. Count unique paid orders and valid issued tickets; do not equate curiosity or unpaid reservations with revenue.
+
+**AI marketing assistant goal:** Help write promotion copy from verified facts, draft event FAQs, prepare updates for human approval, and explain aggregated opt-in engagement. Don't perform unsolicited bulk outreach or personally target attendees based on private chats or transaction histories.
+
+**Economic boundary:** Basic community use is intended to be free. Ticket prices belong to the hosted event. Provider fees, any future platform fee, payouts, refunds and taxes require separate review and transparent disclosure. None are currently live or established.
+
+[Central product blueprint](PRODUCT_BLUEPRINT.md).
+
+
 ## What we want to learn
 
 1. **Who experiences the information gap?** Friends, clubs, local organizers, study groups, sports groups, families or volunteers.

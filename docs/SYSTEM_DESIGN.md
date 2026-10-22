@@ -92,6 +92,35 @@ Enforce authorization server-side on **every read and write**. Hide private grou
 
 A TypeScript web client, a managed authentication/PostgreSQL/realtime backend, and a server-side AI adapter are plausible options. Examples include Next.js and Supabase, but contributors should evaluate maintenance, cost, portability, accessibility and actual security requirements rather than assuming these tools are mandatory.
 
+## Planned ticketing and AI model service boundaries
+
+The ticket module is separate from group chat and the AI assistant. Its proposed backend flow is:
+
+```text
+Event page + authenticated organizer
+     |
+Ticket offers / capacity
+     |
+Server order + limited inventory reservation
+     |
+Hosted payment processor checkout
+     |
+Verified payment webhook + idempotent reconciliation
+     |
+Issue unique ticket → attendee's event wallet → secure check-in
+     |
+Refund / cancellation / reconciliation, restricted to authorized staff
+```
+
+Never issue a paid ticket from a client-side “success” URL alone. Verify authoritative payment state server-side and prevent inventory oversells or duplicate tickets. Do not store raw card details. Use an established provider for payments and decide policies for fees, seller onboarding, payouts, refunds, taxes and access to transaction records before launch.
+
+**Data additions to evaluate:** `ticket_types` (event, price, currency, quota, sale window), `inventory_reservations`, `orders`, `order_items`, `payment_events`, `issued_tickets`, `checkins`, `refunds` and access-controlled audit logs. Server-side authorization, atomic state transitions, webhook verification, idempotency and unique-code validation are essential.
+
+The AI remains a **separate permissioned service** that reads selected or approved event context and returns structured drafts. Start with an existing OpenAI/Claude developer API through a server adapter; later compare self-hosted or tuned models. The model cannot be given payment-provider credentials or permission to initiate charges, refunds, ticket issuance, marketing outreach or changes to prices without a separate explicitly authorized and safely implemented workflow.
+
+**System modules can be developed independently against shared contracts:** Chat/group service, event hub, ticket/order service, payment adapter, organizer/marketing assistant, and optional reporting. See [central product blueprint](PRODUCT_BLUEPRINT.md) and [integration contracts](COMPONENT_CONTRACTS.md).
+
+
 ## Privacy and security baseline
 
 - Private groups by default, role-based access and revocable invites.
