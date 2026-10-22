@@ -1,6 +1,6 @@
 # Contributing to Community AI Workspace
 
-**Japanese version:** [日本語版](CONTRIBUTING.ja.md)
+**Japanese version:** [Japanese version](CONTRIBUTING.ja.md)
 
 Thanks for taking an interest in the project! The application is at the proposal stage, and people who organize events are just as welcome as software developers. There is no confirmed launch date, paid role, or work schedule.
 
