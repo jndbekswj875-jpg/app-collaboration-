@@ -1,6 +1,6 @@
 # Website Growth and Business Validation
 
-**Japanese version:** [日本語版](MARKETING_VALIDATION.ja.md)
+**Japanese version:** [Japanese version](MARKETING_VALIDATION.ja.md)
 
 This document explains how a useful web project story could attract interested people, support a real community-event pilot, and eventually inform a commercial decision. **Website advertising and selling the application are different business models.**
 
