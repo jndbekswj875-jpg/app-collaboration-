@@ -1,7 +1,7 @@
 # Development Task Plan
 
 **Japanese version:** [Japanese version](BUILD_PLAN.ja.md)  
-**Purpose:** Help volunteers choose a clearly scoped contribution. Tasks are proposals, not assignments, paid positions, or scheduled commitments.
+**Purpose:** Track scoped features and acceptance criteria as separate parts of one integrated application. These are planned tasks, not claims that features are already implemented.
 
 ## First milestone: chat before everything else
 
