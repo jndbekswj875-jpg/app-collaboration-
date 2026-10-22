@@ -1,5 +1,13 @@
 # コミュニティAIワークスペース
 
+> **アプリのコードを追加しました：** v0.1は一つのブラウザ内で動く試作品です。複数人のリアルタイム通信や実際のAI接続はまだありません。
+
+**試す方法：** npm run check を実行し、python3 -m http.server 4173 でローカルサーバーを起動します。http://localhost:4173/app/ を開いてください。
+
+**開発状況：** [今できること](docs/CURRENT_STATUS.ja.md) · [開発者向けガイド](docs/DEVELOPER_GUIDE.ja.md) · [GitHub Issues](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) · [ソースコード](app/)。
+
+---
+
 **グループチャットの会話から、イベントの予定・タスク・決定事項を整理できるWebアプリを作る構想です。**
 
 > **アイデアを公開中。ご意見・共同開発メンバーを歓迎します。** リアルタイムチャットやAIアシスタントは、まだ本番公開されていません。

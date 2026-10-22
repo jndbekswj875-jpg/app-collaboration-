@@ -1,0 +1,24 @@
+name: Feature proposal
+description: Suggest one measurable improvement to the web app.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Describe a real organizer or member need without private personal information.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      description: What would demonstrate that the feature works?
+    validations:
+      required: true
