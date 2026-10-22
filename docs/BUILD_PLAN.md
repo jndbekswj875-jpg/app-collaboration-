@@ -85,3 +85,16 @@ Choose **one ID** and open a [GitHub Issue](https://github.com/jndbekswj875-jpg/
 **First acceptance checkpoint:** Two authorized test users chat privately and see the same task board from separate browsers; an outsider is blocked. The optional AI action only prepares an editable draft.
 
 **Related:** [System design](SYSTEM_DESIGN.md) · [Marketing validation](MARKETING_VALIDATION.md) · [Contributing](../CONTRIBUTING.md).
+
+## What the AI event organizer should automate *after* the chat works
+
+The first AI release should focus on repetitive tasks rather than replacing organizers:
+
+| Task ID | User-facing outcome | Verification |
+| --- | --- | --- |
+| A-06 | Catch-up summary and what changed since the last review | Only permitted messages are included; proposed vs confirmed details are distinguished |
+| A-07 | Missing-information checklist and draft task owners | Unanswered questions and unaccepted volunteers stay unconfirmed |
+| A-08 | Event FAQ and reminder drafts from the confirmed event record | Drafts require human approval; no unsolicited outgoing messages |
+| A-09 | Japanese/English support and correction workflow | Human testers can fix errors; meaning is not silently changed |
+
+**Integration order:** Persisted group chat and permission checks → manual board and confirmed event details → consented assistant read action → structured drafts → human-approved changes. AI must never be a prerequisite for basic chat, event viewing or board editing. Details: [Chat first, AI second roadmap](APP_ROADMAP.md).
