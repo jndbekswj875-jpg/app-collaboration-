@@ -141,4 +141,4 @@ Track real-world outcomes, not vanity features:
 - Should profiles and social contacts be visible only to a group or publicly?
 - Can the first test live on an existing website rather than a separate app?
 
-Use [GitHub Issues](../../issues) to discuss these without treating any option as a finalized decision.
+Use [GitHub Issues](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) to discuss these without treating any option as a finalized decision.
