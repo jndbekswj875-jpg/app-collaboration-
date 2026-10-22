@@ -1,80 +1,95 @@
-# Community AI Workspace — AI-powered events, chat & collaboration
-**コミュニティAIワークスペース：イベント・チャット・共同作業**
+# Community AI Workspace | コミュニティAIワークスペース
 
-> **Status (October 2026): Public concept / feedback welcome. Low priority; not an active development commitment.**
->
-> **開発状況：アイデア公開・フィードバック募集段階です。優先度は低く、現在は本格開発していません。**
+**A group chat with an AI assistant that turns conversations into shared event plans and tasks.**  
+**グループチャットの会話をAIが整理し、イベントの予定・タスク・決定事項を共有できるWebアプリ。**
 
-## The idea / このプロジェクトについて
+> 💬 **Ideas and collaborators welcome! / アイデア・共同開発メンバー募集中！**  
+> This is a public project proposal, not a launched service. / 現在は構想を共有する段階で、サービスはまだ公開されていません。
 
-We want to make organizing real-world communities simpler and more welcoming. Instead of coordinating one event across LINE messages, spreadsheets, separate RSVP forms, payment records, and scattered notes, people would have **one shared online workspace** where an **AI event assistant** helps turn conversations into useful plans.
+**[🇬🇧 English](#english) · [🇯🇵 日本語](#日本語) · [System design / 仕組み](docs/SYSTEM_DESIGN.md) · [Build tasks / 開発タスク](docs/BUILD_PLAN.md) · [Marketing & validation / 検証](docs/MARKETING_VALIDATION.md) · [How to help / 参加方法](CONTRIBUTING.md)**
 
-友人やコミュニティのイベント運営では、LINE・出欠確認・会費管理・メモなど、情報が複数の場所に分かれがちです。そこで、**一つの共有ワークスペース**に情報を集約し、**AIが会話からイベントの予定やタスクを整理する**サービスを考えています。
+## English
 
-**Example:** Friends plan a weekend BBQ in a group chat. People suggest times, locations, budgets, and who will bring what. With permission, the AI summarizes the decisions on a shared board; everyone can review and correct them. A linked event page tracks RSVPs and contribution status, and the organizer can send an update without answering the same question repeatedly.
+### The problem
+Friends and community organizers use separate group chats, notes, RSVP forms, spreadsheets, and payment messages. Decisions disappear in conversation history; no one knows which tasks are confirmed, who is coming, or what to do next.
 
-## Who it is for
+### The solution
+**Start with a real-time web chat workspace.** Members join a group, talk naturally, and ask an AI event assistant to **propose** a summary, decisions, tasks, questions, and updates on a shared board. People review and approve changes. Link a simple RSVP event page, then add member profiles, community posts and expense tracking when they prove useful.
 
-- Friends organizing BBQs, parties, trips, reunions, and casual meetups.
-- Clubs and recurring communities sharing updates, member interests, and events.
-- Small organizers who currently juggle chat apps, spreadsheets, RSVP forms, and manual reminders.
+### Example — organizing a BBQ
 
-## Proposed features — not yet built
-
-| Area | Vision |
+| Group chat / 会話 | Shared board / 共有ボード (AI proposal / AIの提案) |
 | --- | --- |
-| Community profiles | Optional display name, short bio, interests, Instagram/other social links, and user-controlled contact visibility. |
-| Groups & invitations | Create a private group, invite people by link, and give organizer/member roles. |
-| Real-time group chat | Discuss plans, ask questions, share updates, and keep event conversations together. |
-| AI organizer assistant | With group permission, summarize selected messages, extract proposed tasks/decisions, highlight missing answers, and draft updates. |
-| Shared board | A reviewable source of truth for event plans, decisions, tasks, deadlines, costs, and changes; people can correct AI mistakes. |
-| Event RSVP | Yes / Maybe / No, optional questions or reasons, capacity, guest list, and reminders. |
-| Shared finances | Track estimated expenses, contributions owed/recorded, and event settlement; actual payment processing is a later integration. |
-| Community memory | Preserve useful event decisions and community updates so they do not disappear in chat history. |
-| Website integration | Eventually connect to an existing website so members can visit for future events and community information. |
+| Mika: “Saturday afternoon?” | 📅 Proposed date: Saturday; exact time undecided |
+| Ken: “I can bring drinks.” | 🥤 Suggested task: Ken to bring drinks; confirm |
+| Aki: “Maybe ¥2,000 per person?” | 💴 Budget suggestion: ¥2,000; not yet agreed |
+| Someone: “Where will we meet?” | ❓ Open question: location |
 
-### Sample user journey
+The AI is a **helper, not a decision maker**. It must not silently publish decisions, send messages, or charge members.
 
-1. Create or join a group.
-2. Fill in an optional profile and choose what others can see.
-3. Discuss an upcoming gathering in the group's chat room.
-4. Ask AI to organize agreed details into a **proposed** shared event board.
-5. People confirm/correct the proposal; the organizer publishes the event.
-6. Members RSVP, review tasks and optional contribution details.
-7. The group receives updates, attends the event, and leaves feedback for next time.
+### How people would use it
+1. **Join:** Accept a group invite; create an account and optional profile (name, interests, Instagram, contact preference with privacy controls).
+2. **Chat:** Discuss an event in a browser, with live updates for group members.
+3. **Ask AI:** Choose chat messages and request a summary or task suggestions (only with appropriate group consent).
+4. **Confirm:** Review proposed board items, edit mistakes and approve confirmed details.
+5. **Organize:** Share the event, manage Yes / Maybe / No RSVPs and agreed tasks; optionally record contribution status.
+6. **Return:** Share stories or updates and organize the next event.
 
-## What AI may and may not do
+### System at a glance
+```text
+Web browser / mobile
+  └── Group workspace (profile + invitation + LIVE CHAT)
+         ├── Realtime backend + database + permissions
+         ├── Shared board (reviewed tasks, decisions, questions)
+         ├── Event page (invites / RSVP / optional expenses)
+         └── AI assistant gateway
+               ├── START: OpenAI API or Anthropic Claude API
+               └── LATER: evaluate self-hosted/open-weight models
+```
+We would begin with a paid API to test whether AI summaries and task extraction help real users. A later self-hosted model **might** reduce some costs at sufficient usage, but only after comparing model quality, latency, hosting hardware, electricity, maintenance and privacy obligations. AI services must stay on the server with secure credentials, usage caps, logging and reviewable results. ChatGPT subscriptions do not include OpenAI API usage.
 
-The goal is **an assistant for an event**, not an invisible bot controlling a community.
+### How this could grow into a business
+Our existing website can share an **original, useful project case study**, bring interested people to a feedback/interest form and invite them to a real-event pilot. We would measure genuine visitor interest and saved organizer time, then test whether organizers return or will pay.
 
-- AI should **suggest and draft** tasks, summaries, reminders, and board changes.
-- People must be able to review or edit consequential AI-generated content.
-- No auto-sending messages, charging money, making reservations, or sharing private contacts without appropriate authorization.
-- Access to chat content must be explicit and limited to the groups/messages members agree to share with AI. Do **not** assume the app can read private LINE conversations or import historical LINE chats.
-- Show what information AI used; allow correction and deletion where appropriate.
-- Separate private member data from public project documentation.
+**Two separate possibilities:** website content might eventually qualify for **AdSense after independent policy approval**; a validated app could later become a subscription/service. Neither income stream is currently confirmed or guaranteed. A private chat room by itself is **not** a substitute for helpful, indexable website content.
 
-## A small first test (when ready)
+### Want to collaborate?
+Start with the **[build plan](docs/BUILD_PLAN.md)** and its small, independently understandable tasks:
+- **Design:** mobile-first layout for a group room, chat, and shared board.
+- **Frontend:** message list, composer and board review states.
+- **Backend:** accounts, group membership permissions, message storage and live delivery.
+- **AI:** consent-based summarization, structured draft output and cost metrics.
+- **Product / marketing:** talk to real organizers, define the pilot, measure usefulness and publish consented learnings.
 
-**Goal:** Try one real, small event using a simple event page and RSVP flow, with an organizer reviewing a manually or AI-generated summary.
+You can help through design, research, testing, writing, or engineering. Open an [issue](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) or read [CONTRIBUTING.md](CONTRIBUTING.md). We welcome practical critique before building complexity.
 
-**Success evidence to look for:** actual RSVPs, reduced organizer follow-up work, fewer missed decisions, users saying they want to use it again, and willingness of an organizer to keep using it.
+## 日本語
 
-This is a validation experiment—not a promise to deliver all features above. See [PRODUCT_VISION.md](docs/PRODUCT_VISION.md) for a phased concept and [CONTRIBUTING.md](CONTRIBUTING.md) for how to help.
+### 解決したい課題
+イベントを企画すると、LINEなどのチャット、出欠確認、メモ、会費管理が別々になりがちです。会話の中に大切な決定事項が埋もれ、「誰が来るのか」「次に何をするのか」が分かりにくくなります。
 
-## Want to help? / 一緒に作りませんか？
+### 作りたいサービス
+**まずはリアルタイムで話せるWebチャット・ワークスペースを作ります。** メンバーがグループに参加して相談し、必要なタイミングでAIに会話の整理を依頼します。AIが予定・決定事項・未解決の質問・タスクを**提案**し、全員で確認・修正した内容を共有ボードに反映します。出欠確認やイベント情報も同じ場所で扱えるようにします。
 
-This project is public to invite **ideas, constructive criticism, design suggestions, and potential collaborators**. You don't need to be a developer to help: event organizers and people who use group chats are especially welcome.
+### 利用イメージ
+1. **参加:** 招待リンクからグループに参加。名前、自己紹介、興味、InstagramなどのSNS、連絡方法は任意で登録し、公開範囲を選べます。
+2. **会話:** グループ専用チャットでイベントの相談をリアルタイムに行います。
+3. **AIに整理を依頼:** メンバーの同意を前提に、対象のメッセージから要約やタスク候補を作ります。
+4. **共有ボードで確認:** AIが提案した予定・タスク・予算案を人が確認・修正・承認します。
+5. **イベント運営:** 参加・未定・不参加の出欠、担当タスク、必要に応じた会費の記録を管理します。
+6. **次回へ:** イベントの思い出やお知らせを共有し、次のイベントにつなげます。
 
-アイデアへのご意見、デザイン・開発へのご協力、イベント運営の課題の共有などを歓迎します。エンジニア以外の方からのフィードバックも大歓迎です。
+### AIの導入方法
+**最初はOpenAI APIまたはClaude API**を利用して、要約やタスク抽出が本当に役立つかを検証します。APIの利用料金は使用量に応じて発生します。将来的には独自サーバーで動かせるオープンウェイトモデルも比較し、**品質・利用量・サーバー代・運用工数を含めた総コスト**で判断します。「自前AIなら必ず安い」とは限りません。
 
-- 💬 [Open an Issue to share a suggestion](../../issues/new)
-- 🧩 [Explore current discussions and tasks](../../issues)
-- 📖 [Read the full concept](docs/PRODUCT_VISION.md)
-- 🤝 [How to contribute](CONTRIBUTING.md)
+### Webサイト・マーケティングとの接続
+既存サイトでは、開発アイデアや実際の利用課題を**オリジナルの役立つ記事・事例**として公開し、関心のある人にアンケートやテストへの参加を案内します。訪問や問い合わせ、試用、再利用のデータを基に価値を検証します。サイトの**Google AdSense収益**と将来の**アプリ提供による収益**は別々に検証します。広告収益にはGoogleの審査・規約遵守が必要で、閲覧数だけで収益は保証されません。
 
-**Current status:** No public production application, authenticated chat service, payment integration, or live AI assistant is claimed here. Future development and licensing decisions will be discussed with collaborators.
+### 一緒に考えたり作ったりしませんか？
+エンジニア、デザイナー、イベント主催者、テスターの方を歓迎します。技術スキルがなくても、普段のイベント運営で困っていることを共有していただくだけで助かります。
+
+まずは **[開発タスク一覧](docs/BUILD_PLAN.md)**、[システム設計](docs/SYSTEM_DESIGN.md)、[参加方法](CONTRIBUTING.md)、[GitHub Issues](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) をご覧ください。
 
 ---
 
-*Origin: “招待のアプリを作りたい” — I want to build an app for invitations. This repository expands that idea into an event-centered community workspace.*
+**Status / 現状:** Concept and documentation are public. No production group chat, member database, real payment service or AI backend is deployed. / 企画書を公開中です。実運用のチャット・データベース・決済・AI機能は未実装です。
