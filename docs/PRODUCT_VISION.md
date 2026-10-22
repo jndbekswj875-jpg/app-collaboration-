@@ -1,6 +1,6 @@
 # Product vision: Community AI Workspace
 
-**Document status:** Early ideas for discussion, not an approved implementation plan. **Priority: low / someday** (2026-10-22).
+**Document status / 状況:** Public product idea for discussion and collaboration; features below are proposals, not a launched service. / 意見交換・共同開発のために公開した構想です。記載機能は未完成です。
 
 ## 1. The problem
 
@@ -66,34 +66,31 @@ AI **drafts**:
 
 AI must not treat suggestions as unanimous consent, invent attendance, or assert financial settlement without records.
 
-## 6. Product phases
+## 6. Product phases / 開発の進め方
 
-### Phase 0 — Discover the real problem (next gate, when prioritized)
-- Follow one real event and document the organizer's current process.
-- Interview or observe recurring organizers; measure repetitive questions and minutes spent.
-- Run a lightweight RSVP + manually curated update-board experiment.
+### Phase 0 — Understand one real event / 実際のイベントを理解する
+- Follow one real event and document how people communicate, decide tasks and track attendees. / 一つのイベントの連絡・役割分担・出欠管理を観察。
+- Test which repeated step is most difficult. / 繰り返し発生する課題を確認。
 
-### Phase 1 — Minimal event workspace (only after evidence)
-- Branded event page, invitations by link, member or guest RSVP.
-- Organizer dashboard for response changes and basic task board.
-- Edit history and moderation; secure, shared data storage.
-- No real-money handling, no private chat imports, no AI automation.
+### Phase 1 — Group + realtime chat / グループ・リアルタイムチャット
+- Secure login, invitations, membership roles and private groups. / 認証・招待・参加権限。
+- Persistent live chat, responsive interface and access checks. / 履歴が残るリアルタイムチャット。
+- Manual shared board for tasks, decisions and open questions. / 最初は手動の共有タスクボード。
 
-### Phase 2 — Community & collaboration
-- Optional profiles, groups, invitation roles, real-time chat, shared stories/activity.
-- Group moderation, blocking/reporting where relevant, access controls.
-- Searchable shared boards.
+### Phase 2 — First AI API experiment / 外部AI APIで小さく検証
+- Server-side OpenAI API **or** Anthropic Claude API integration. / APIキーをサーバーに保管して接続。
+- Selected consented messages → structured drafts → review and approval. / 許可された会話→構造化された下書き→人が承認。
+- Evaluate accuracy, Japanese and English handling, latency, review effort and actual cost. / 精度・日英対応・時間・費用を計測。
 
-### Phase 3 — Consent-based AI assistance
-- On-demand summaries and action-item proposals with human review.
-- Draft messages/reminders and flag unresolved questions.
-- Usage controls, logging, retention rules and cost caps.
+### Phase 3 — Event workflows and community / イベント運営・コミュニティ機能
+- RSVP, event updates, optional profiles/social links, community posts and contribution records. / 出欠・予定・SNSプロフィール・投稿・会費記録。
+- Add in order of demonstrated user demand, not all at once. / 必要性が確かめられた順に実装。
 
-### Phase 4 — Verified advanced workflows
-- Payment provider integration, settlements, check-in, recurrent events, external messaging integration.
-- Build only features supported by repeated customer evidence and sustainable cost.
+### Phase 4 — Local AI and commercial features / 自前AI・サービス化を評価
+- Benchmark self-hosted licensed open-weight models versus paid APIs on quality-adjusted total cost. / 品質も含む総コストで自前モデルと比較。
+- Payment-provider integration and organizer subscription only after repeat use/paid commitment. / 継続利用・支払い意思を確認後に決済・課金を検討。
 
-These phases describe a **possible** direction. There is no delivery date or budget commitment yet.
+These phases describe an **illustrative direction**, not promised release dates. / これは検討中の進行案であり、リリース日を約束するものではありません。
 
 ## 7. UX screens (concept only)
 
@@ -107,7 +104,7 @@ These phases describe a **possible** direction. There is no delivery date or bud
 
 ## 8. Technology options for future discussion
 
-For a small web-first experiment, a conventional frontend plus managed auth/database/realtime service may be sufficient (e.g. Next.js with Supabase). AI would run server-side with explicit scoping and approval. Payment processing should be delegated to a licensed provider, not custom storage of card information or user balances.
+For a small web-first experiment, a conventional frontend plus managed auth/database/realtime service may be sufficient (e.g. Next.js with Supabase). Start with a **real group chat** and manual board, then test a server-side **OpenAI API or Anthropic Claude API** for permissioned summarization and proposed tasks. Later consider a self-hosted open-weight model only if actual API usage justifies the hardware, hosting, security and maintenance. Payment processing should be delegated to an appropriate established provider.
 
 **Technology is not selected.** Contributors should evaluate privacy, costs, accessibility, Japanese/English support, performance, portability, and ease of maintenance before deciding.
 
@@ -142,3 +139,12 @@ Track real-world outcomes, not vanity features:
 - Can the first test live on an existing website rather than a separate app?
 
 Use [GitHub Issues](https://github.com/jndbekswj875-jpg/app-collaboration-/issues) to discuss these without treating any option as a finalized decision.
+
+
+## Detailed system and contributor work / システム設計・作業分担
+
+- [Bilingual system design / システムの仕組み](SYSTEM_DESIGN.md)
+- [Start with the task map / 具体的な開発タスク](BUILD_PLAN.md)
+- [Website growth, AdSense boundary and product validation / 集客と検証](MARKETING_VALIDATION.md)
+
+**日本語での概要:** このサービスの中心は**リアルタイムのグループチャットと共有タスクボード**です。グループ内で相談し、許可された会話をAIが整理して「予定・役割・未解決の質問」を提案します。人が内容を確認してから決定事項として共有します。最初はOpenAIまたはClaudeのAPIで動作を検証し、将来の利用量・費用・品質を見て自前AIを比較します。参加者のプロフィール、出欠、会費、ストーリー共有は必要性を確かめながら追加します。詳細は上記の日本語併記資料をご覧ください。
