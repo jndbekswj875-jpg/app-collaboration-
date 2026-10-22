@@ -1,0 +1,53 @@
+name: Share your event-planning problem
+description: Tell us what makes communicating and organizing with a group difficult. No technical knowledge needed.
+title: "[User feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping shape a free-to-use AI chat workspace for friends and communities.
+        **This GitHub post is public.** Please don't include names, addresses, phone numbers, private conversations, or other sensitive information.
+  - type: dropdown
+    id: activity
+    attributes:
+      label: What kind of group or event?
+      options:
+        - Friends or family gathering
+        - Trip or outing
+        - Hobby, club, or sports activity
+        - Study group
+        - Community or volunteer event
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: How do you organize it today?
+      description: What kinds of chats, apps or methods do you currently use? General descriptions are fine.
+      placeholder: We use a group chat and someone keeps a separate list of decisions...
+    validations:
+      required: true
+  - type: textarea
+    id: pain
+    attributes:
+      label: What information is difficult to share or find?
+      description: Describe one specific frustrating moment.
+      placeholder: People missed a change of meeting place and had to ask again...
+    validations:
+      required: true
+  - type: textarea
+    id: ai
+    attributes:
+      label: What should an AI chat workspace help you with?
+      placeholder: Summarize decisions, show changes since yesterday, clarify who's bringing what...
+  - type: dropdown
+    id: try
+    attributes:
+      label: Would you consider testing a free early version when available?
+      options:
+        - Yes
+        - Maybe
+        - Not right now
+    validations:
+      required: true

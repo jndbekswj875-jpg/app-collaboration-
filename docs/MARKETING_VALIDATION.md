@@ -1,79 +1,44 @@
-# Website Growth and Business Validation
+# Learning from people who organize events
 
-**Japanese version:** [Japanese version](MARKETING_VALIDATION.ja.md)
+[Japanese version](MARKETING_VALIDATION.ja.md) · [Project overview](../README.md)
 
-This document explains how a useful web project story could attract interested people, support a real community-event pilot, and eventually inform a commercial decision. **Website advertising and selling the application are different business models.**
+The Community AI Workspace is intended to be **free for personal and community use**. This document focuses on listening to potential users and testing whether a chat-based shared workspace actually helps. It is not a pricing plan or an invitation to hire developers.
 
-## Audience → problem → useful content
+## What we want to learn
 
-Start with a specific organizer problem that actually exists, such as important decisions getting lost in group chat. Publish an original, practical article that is useful **even before the application exists**.
+1. **Who experiences the information gap?** Friends, clubs, local organizers, study groups, sports groups, families or volunteers.
+2. **Where does the information get lost?** Fast-moving chats, separate RSVP lists, changed details, missed reminders or unclear responsibilities.
+3. **What makes the problem painful?** Repeated messages, forgotten decisions, organizer stress, late arrivals or people feeling left out.
+4. **What could help?** A group chat, one shared board, event status, catch-up summary or user-controlled AI assistant.
+5. **What feels simple and safe?** Invites, permissions, privacy, mobile access and reliable summaries.
 
-Potential examples:
-- “How to keep event decisions from getting buried in group chats.”
-- “A practical checklist for event RSVPs, responsibilities and costs.”
-- “What we learned by testing AI summaries on event conversations” — only after a genuine consent-based test.
+## How to test the idea
 
-A dedicated Ideas/Projects article on an existing owned website may be appropriate, provided it serves that website's visitors. Avoid filling a site with unrelated pages or implying that unbuilt features are available.
+- Ask people to describe **one real event** and one difficult moment in organizing it.
+- Group similar feedback without collecting private chat histories.
+- Show the prototype and make clear that it is single-browser only.
+- Ask users which feature solves an actual problem, not just which features sound interesting.
+- When secure multi-person chat exists, conduct an opt-in small-group test.
+- Measure whether people miss fewer updates, save time, understand decisions, and choose to use the free tool again.
 
-## Feedback and participation
+## Signs of useful progress
 
-A helpful page can offer a clear, voluntary next step: read the concept, answer a short question, or apply to test a prototype. Collect only necessary information, explain privacy and participation terms, and use permissioned, anonymized examples.
-
-Suggested funnel:
-
-```text
-Original useful article
-          |
-Relevant reader / source traffic
-          |
-Voluntary feedback or pilot interest
-          |
-One real event pilot
-          |
-Measured organizer time saved + errors and cost
-          |
-Repeat use or genuine payment commitment
-          |
-Possible product or service offering
-```
-
-## Two distinct revenue paths
-
-**Website advertising:** Requires meeting the relevant advertising program's site quality, eligibility and policy requirements, plus separate account/site approval. Traffic and SEO alone do not guarantee approval, ads or payouts. Private chat pages are not a replacement for helpful, discoverable public content.
-
-**Future app/service:** Requires evidence that real groups use the workspace repeatedly and organizers receive enough value to adopt or pay for it. Possible subscriptions or service fees should be assessed only after real pilots and economics are known.
-
-Do not treat search impressions, pageviews, signups, interest, customer commitments and actual collected revenue as interchangeable measurements.
-
-## Validation metrics
-
-| Stage | What to measure |
+| Step | What we can measure |
 | --- | --- |
-| Discovery | Relevant search queries, impressions, clicks and referring sources |
-| Website engagement | Useful page visits, navigation, meaningful voluntary inquiries |
-| Pilot interest | Eligible organizers who actually agree to try an event |
-| Real usage | Invited members, successful private group chats, RSVP answers |
-| Organizer value | Time saved, fewer repeated questions, confirmed board usefulness |
-| AI quality | Correct suggestions, false decisions, review effort, latency |
-| AI economics | Total spend, usage per event, cost per useful approved result |
-| Retention | Repeat events and organizers requesting another use |
-| Money | Verified service revenue or separately verified advertising payments |
+| Discovery | Relevant people reading the project and sharing a specific problem |
+| Feedback | Repeated, concrete problems across different kinds of events |
+| Prototype | People can understand and use the core interface |
+| Pilot | Actual organizers use the shared workspace for a real activity |
+| Value | Fewer repeated explanations, faster catch-up, fewer missed decisions |
+| Continued use | People choose to return for another event |
+| Trust | Clear consent, corrections, and no accidental sharing of private information |
 
-## Initial experiment
+Do not invent participant counts or report sample demo messages as real feedback.
 
-Observe one upcoming small event run by an actual organizer. Record the current communication workflow and how much manual coordination it takes. Then test a minimal shared chat/board intervention with permission. Compare tasks completed, time spent and confusion before deciding which feature comes next.
+## The next conversation we want
 
-## SEO and AdSense boundary
+**“Tell us about the last time an event was difficult to organize. What information was hard to share?”**
 
-Focus on original people-first information, genuine visitor intent, sound navigation, accessible mobile pages, privacy disclosures where required, and accurate claims. Do not manufacture thin pages for traffic. A new web app neither creates guaranteed AdSense earnings nor replaces the need to diagnose and remedy any approval issues independently.
+[Share your experience](https://github.com/jndbekswj875-jpg/app-collaboration-/issues/new?template=feedback-en.yml).
 
-Official guidance:
-- [AdSense eligibility](https://support.google.com/adsense/answer/9724?hl=en)
-- [Google Search Essentials](https://developers.google.com/search/docs/essentials)
-- [Creating helpful, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
-
-## Development and measurement coordination
-
-This document is a public business hypothesis, **not a personal daily plan**. Participants can use [the development task map](BUILD_PLAN.md) to choose a contribution, report an actual result, and note what is unknown. Do not put private business plans, member records or personal schedules in public project files.
-
-**Related:** [README](../README.md) · [Development tasks](BUILD_PLAN.md).
+There is no live service account or payment option. The goal today is to understand your needs and build the smallest genuinely useful free tool.
