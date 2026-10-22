@@ -28,6 +28,41 @@ A shared space that combines **group conversation + an organized board + an AI c
 
 AI suggestions should remain drafts until people check and confirm them. Members should be able to control what private conversations the assistant may process.
 
+## Our roadmap: build the workspace first, then add the AI organizer
+
+### Stage 1 — A useful chat-based workspace, without AI
+
+Start with a simple place people genuinely want to use for organizing a gathering.
+
+- **Private group chat:** Invite friends, talk in real time, and find the conversation again later.
+- **One event space:** Keep the event's date, meeting point, description, and updates together.
+- **Shared information board:** Show decisions, undecided questions, a checklist, and who's responsible.
+- **Attendance and progress:** Members can respond to invitations and see which preparations are complete.
+- **Works even without AI:** People can enter, edit, confirm, and share details themselves.
+
+**First major milestone:** Two invited members can sign in from different browsers, exchange messages, and see the same saved group plan securely. This is **not yet complete**.
+
+### Stage 2 — Add an AI event-organizer assistant to reduce repetitive work
+
+Once the chat and shared information work, introduce an **AI chatbot inside the workspace** to help an organizer with simple, time-consuming tasks:
+
+| Repetitive organizing task | What the AI assistant could help with |
+| --- | --- |
+| Re-reading hundreds of messages | Summarize updates and explain what's changed |
+| Repeating the same answers | Draft a concise event-information FAQ from confirmed details |
+| Finding out who is doing what | Suggest a checklist and possible task owners for review |
+| Chasing unanswered questions | Highlight missing RSVPs, missing details, or open decisions |
+| Writing reminders and announcements | Prepare a message for the organizer to approve and send |
+| Figuring out what needs attention next | Suggest the next small organizing step, with context |
+
+Example questions you could ask: **“What's left to organize?”**, **“What did I miss?”**, **“Which decisions are still open?”**, and **“Prepare a reminder for everyone who hasn't replied.”**
+
+**People stay in control.** The AI must not invent confirmed decisions, read messages without appropriate consent, send reminders automatically without permission, book venues, or spend money on its own.
+
+For the first real AI version, we can integrate and evaluate an existing hosted AI model through a secure server connection. Later, we may improve a specialized event-organizer assistant or compare self-hosted models based on actual user needs and cost. **No custom-trained AI model exists in the project yet.**
+
+[See the step-by-step product roadmap](docs/APP_ROADMAP.md).
+
 ## For example: organizing a weekend gathering
 
 | Group conversation | What the workspace could show |
