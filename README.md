@@ -4,7 +4,7 @@
 
 We are designing a **free-to-use, AI-assisted chat workspace** for friends, personal events, and local communities. The goal is simple: help everyone find the right information at the right time, even when conversations move quickly and people cannot always reply immediately.
 
-**[日本語ページはこちら](README.ja.md)** · **[Tell us your event-planning problem](https://github.com/jndbekswj875-jpg/app-collaboration-/issues/new?template=feedback-en.yml)**
+**[Japanese version](README.ja.md)** · **[Tell us your event-planning problem](https://github.com/jndbekswj875-jpg/app-collaboration-/issues/new?template=feedback-en.yml)**
 
 > **We're still building it.** A local browser demo exists, but real multi-person chat and the AI assistant are not available as an online service yet. We intend to make the service free for personal and community use. No payment, subscription, or live account is being offered here.
 
