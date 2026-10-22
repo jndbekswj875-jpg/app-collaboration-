@@ -29,6 +29,12 @@ body:
     validations:
       required: true
   - type: textarea
+    id: promotion
+    attributes:
+      label: How do you promote the event and reach attendees?
+      description: Which tools or channels do you switch between to advertise, invite, answer questions, collect RSVPs and send updates? General examples only.
+      placeholder: We share the event on social media, coordinate in group chat, and use a separate form for RSVPs...
+  - type: textarea
     id: pain
     attributes:
       label: What information is difficult to share or find?

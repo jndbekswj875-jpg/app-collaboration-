@@ -28,6 +28,25 @@ Ask organizers and participants about one recent event. Which messages were miss
 | Notifications | See meaningful updates; choose what notifications to receive | After secure shared data |
 | Accessible mobile interface | Join and participate easily on a phone, in English or Japanese | Must-have |
 
+### The missing bridge: event promotion and direct attendee communication
+
+Before adding AI, the chat workspace should also support the basic *event lifecycle*:
+
+1. **Create:** Organizer enters the event title, summary, date, place and optional capacity.
+2. **Share:** Generate a stable event link and choose between public information and invitation-only details.
+3. **Invite and attract:** Let visitors understand the event and request or confirm participation. Share the link in existing channels where helpful; automatic cross-platform promotion is not assumed.
+4. **Communicate:** Provide event-scoped chat or questions, organizer responses and an accessible information page.
+5. **Announce:** Organizer posts a confirmed update (e.g., new meeting location); authorized attendees immediately see the latest version. Opt-in notifications can follow.
+6. **Coordinate:** Keep RSVPs, a checklist, responsibilities, and a change history together.
+
+**First additional acceptance test:** A person with the correct access can open an event link, see current details, ask or respond to a question and view an organizer's saved update. An outsider cannot see a private discussion. Public promotion content and private attendee messages must have distinct access rules.
+
+After Stage 1 is working, the AI assistant can use authorized event context to prepare responses to common questions, draft changes and reminders, and identify incomplete tasks. It should never send messages automatically, nor invent confirmed event details.
+
+**Potential later additions:** in-app calls, outbound email delivery and optional cross-posting to external platforms. These require separate integration work and must not be presented as built-in today.
+
+[Detailed event hub experience and privacy boundaries](EVENT_HUB_CONCEPT.md)
+
 ### What success looks like
 
 Two invited people on separate devices can log in securely, discuss an event, and see the **same saved messages and board state**. The organizer can change a plan and participants can find the latest confirmed version. Outsiders cannot access group data. All basic coordination still works when AI is disabled.

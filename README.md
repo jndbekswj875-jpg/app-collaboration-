@@ -28,6 +28,26 @@ A shared space that combines **group conversation + an organized board + an AI c
 
 AI suggestions should remain drafts until people check and confirm them. Members should be able to control what private conversations the assistant may process.
 
+## One event hub — not another app to juggle
+
+**This is also a marketing and communication tool for event organizers.** An organizer shouldn't have to move between an event promotion page, group chat, email, phone calls, RSVP spreadsheets, and separate update tools just to hold one gathering.
+
+The vision is **one event workspace** for the event's entire journey:
+
+1. **Create the event.** Give it a title, description, date, location, and optional public or invite-only page.
+2. **Promote and invite.** Share a single event link that explains what the event is about and how to join. Event discovery or promotion can happen from that page; we won't claim the app can automatically advertise on third-party platforms.
+3. **Connect directly with attendees.** Let people ask the organizer questions and communicate inside the same event space, rather than being forced to move to email or another messenger.
+4. **Keep everyone up to date.** Post one important announcement—such as a new meeting point or schedule change—and make it visible immediately to authorized attendees, with optional notifications.
+5. **Manage preparation.** Track RSVPs, responsibilities, unanswered questions and the latest confirmed event information.
+6. **Later, let AI help.** The event-organizer chatbot could turn repeated attendee questions into draft FAQs, summarize changes, suggest tasks, and prepare update messages for the organizer to approve.
+
+**For attendees:** One link to see the latest plan, respond, ask a question and find updates.  
+**For organizers:** One place to introduce the event, communicate, answer questions and manage preparations.
+
+The goal is to **reduce the need to switch between platforms**, not to claim that existing email, phone, or external social platforms are already integrated. Built-in voice calls, third-party posting and outbound email delivery are *possible later features*, not current capabilities.
+
+[Explore the event hub and communication concept](docs/EVENT_HUB_CONCEPT.md).
+
 ## Our roadmap: build the workspace first, then add the AI organizer
 
 ### Stage 1 — A useful chat-based workspace, without AI
